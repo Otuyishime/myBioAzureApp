@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<!-- Header -->
+<header style="background: url('http://cdn.metube.id/covers/channels/2jUAaZOLMkyCgoS78LzG.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8">
+                <div class="site_heading">
+                    <div style="padding-top:40px; padding-bottom:60px">
+                        <blockquote>
+                            <p style="color: black">
+                                “There are two ways of constructing a software design. 
+                                One way is to make it so simple that there are obviously no deficiencies. 
+                                And the other way is to make it so complicated that there are no obvious deficiencies.”
+                            </p>
+                        </blockquote>
+                    </div>
+                    <div class="intro-text">
+                        <hr class="star-light">
+                        <span class="skills" style="color: black">
+                            - C.A.R. Hoare
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- About Section -->
+<section class="success" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Projects</h2>
+                <hr class="star-light">
+            </div>
+        </div>
+        <div id="myProjects">
+            @for(int i = 0; i < 1; i++)
+            {
+                {Html.RenderPartial("_ProjectsPartialView");}
+            }
+        </div>
+    </div>
+</section>
+
