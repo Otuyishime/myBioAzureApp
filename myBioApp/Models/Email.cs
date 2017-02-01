@@ -5,15 +5,19 @@ namespace myBioApp.Models
 {
     public class Email
     {
+        [Required(ErrorMessage = "Name is Required")]
         public String Name { get; set; }
 
-        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Email is Required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public String Email_Str { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
+        [Required(ErrorMessage = "Phone number is Required")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Invalid Phone Number")]
         public String PhoneNumber { get; set; }
 
-        [Range(minimum:0, maximum:500)]
+        [Required]
+        [StringLength(maximumLength: 500)]
         public String Message { get; set; }
     }
 }

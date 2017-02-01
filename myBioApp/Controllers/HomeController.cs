@@ -18,8 +18,9 @@ namespace myBioApp.Controllers
             return View();
         }
 
-        // GET: Home
-        public ActionResult Contact()
+        [HttpGet]
+        [ActionName(name: "Contact")]
+        public ActionResult Contact_Get()
         {
             return View();
         }
@@ -31,14 +32,16 @@ namespace myBioApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult ContactMe(Email email)
+        [ActionName(name: "Contact")]
+        public ActionResult Contact_Post(Email email)
         {
             if (ModelState.IsValid)
             {
                 // send email
                 try
                 {
-                    CustomEmail.SendEmailNotification(email: email, receiver: "oliviertyishime@gamil.com");
+                    CustomEmail.SendEmailNotification(email: email);
+                    return new RedirectResult("/Home/Contact");
                 }
                 catch (Exception ex)
                 {
@@ -46,7 +49,7 @@ namespace myBioApp.Controllers
                 }
 
             }
-            return new EmptyResult();
+            return View(email);
         }
     }
 }

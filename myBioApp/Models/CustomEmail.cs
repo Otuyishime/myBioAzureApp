@@ -5,7 +5,7 @@ namespace myBioApp.Models
 {
     public class CustomEmail
     {
-        public static void SendEmailNotification(Email email, string receiver)
+        public static void SendEmailNotification(Email email)
         {
             try
             {
@@ -13,8 +13,8 @@ namespace myBioApp.Models
                 System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
                 System.Net.Mail.SmtpClient SmtpServer = new System.Net.Mail.SmtpClient("smtp.gmail.com");
                 mail.From = new System.Net.Mail.MailAddress("olix.tech@gmail.com");
-                mail.To.Add(receiver);
-                mail.Subject = "myBio App Message from " + email.Email_Str.ToString();
+                mail.To.Add(email.Email_Str);
+                mail.Subject = "myBio App Message from " + email.Email_Str.ToString() + "Phone numbers: " + email.PhoneNumber;
                 mail.Body = email.Message;
                 mail.BodyEncoding = Encoding.UTF8;
 
