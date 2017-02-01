@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using myBioApp.Models;
+using System;
+using System.Web.Mvc;
 
 namespace myBioApp.Controllers
 {
@@ -26,6 +28,25 @@ namespace myBioApp.Controllers
         public ActionResult Projects()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ContactMe(Email email)
+        {
+            if (ModelState.IsValid)
+            {
+                // send email
+                try
+                {
+                    CustomEmail.SendEmailNotification(email: email, receiver: "oliviertyishime@gamil.com");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error from failed send notifications: " + ex.Message);
+                }
+
+            }
+            return new EmptyResult();
         }
     }
 }
